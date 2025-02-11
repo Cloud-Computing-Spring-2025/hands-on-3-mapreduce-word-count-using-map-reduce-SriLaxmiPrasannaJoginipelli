@@ -19,7 +19,7 @@ This project uses Hadoop MapReduce to illustrate a Word Count. A text file is pr
 
 # Approach and Implementation
 
-### 1.Mapper Logic
+### 1. Mapper Logic
 
 Key-value pairs (word, 1) are produced by the Mapper after it reads the input text file line by line and divides each line into words.
 Every time a word appears, it is given to the Reducer with a count of 1.
@@ -134,12 +134,13 @@ To copy the output from HDFS to your local machine:
 3. Commit and push to your repo so that we can able to see your output
 
 
-# Challenges Faced & Solutions
+## Challenges Faced & Solutions
 
-### 1. JAR file not found - Made sure the right path to the JAR file was used and that the mvn package ran correctly.
+| **Challenge**                     | **Solution** |
+|-----------------------------------|-------------|
+| JAR file not found               | Ensured the correct path to the JAR file and successfully ran `mvn package`. |
+| Output directory already exists  | Removed the existing output directory using `hadoop fs -rm -r /output` before running the job again. |
+| File not found in HDFS           | Verified the file upload with `hadoop fs -ls /input/dataset/`. |
 
-### 2. Output directory already exists - Hadoop fs -rm -r /output was used prior to rerunning the job.
-
-### 3. File not found in HDFS - File upload was confirmed using Hadoop fs -ls /input/dataset/.
 
 
