@@ -13,6 +13,22 @@ By completing this activity, students will:
 4. **Work with Docker Containers:** Understand how to use Docker to run and manage Hadoop components and transfer files between the host and container environments.
 5. **Analyze MapReduce Job Outputs:** Learn how to retrieve and interpret the results of a MapReduce job.
 
+# Project Overview
+
+This project uses Hadoop MapReduce to illustrate a Word Count. A text file is processed by the application, which then outputs the frequency of each word in the file. The project demonstrates basic distributed processing techniques using the MapReduce framework and is intended to run on a Hadoop cluster.
+
+# Approach and Implementation
+
+### 1.Mapper Logic
+
+Key-value pairs (word, 1) are produced by the Mapper after it reads the input text file line by line and divides each line into words.
+Every time a word appears, it is given to the Reducer with a count of 1.
+
+### 2. Reducer Logic
+
+Words are given to the Reducer as keys, and a list of their occurrences is given to them as values.
+It generates the final count for every word by combining the values (summing them up).
+
 ## Setup and Execution
 
 ### 1. **Start the Hadoop Cluster**
@@ -116,3 +132,14 @@ To copy the output from HDFS to your local machine:
     docker cp resourcemanager:/opt/hadoop-3.2.1/share/hadoop/mapreduce/output/ shared-folder/output/
     ```
 3. Commit and push to your repo so that we can able to see your output
+
+
+# Challenges Faced & Solutions
+
+### 1. JAR file not found - Made sure the right path to the JAR file was used and that the mvn package ran correctly.
+
+### 2. Output directory already exists - Hadoop fs -rm -r /output was used prior to rerunning the job.
+
+### 3. File not found in HDFS - File upload was confirmed using Hadoop fs -ls /input/dataset/.
+
+
